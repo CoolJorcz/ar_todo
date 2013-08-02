@@ -1,24 +1,29 @@
 require_relative 'config/application'
-
+require_relative 'app/controllers/task_controller'
 # puts "Put your application code in #{File.expand_path(__FILE__)}"
-input = ARGV[0]
+command = ARGV[0]
+ARGV.shift
+input = ARGV.join(' ')
 
-case input
+case command
 
 when 'add'
-  input.shift
-
+  TaskController.add(input)
+  puts "Adding #{input} to tasks..."
+when 'list'
+  TaskController.list.each_with_index do |task, index|
+    if task.complete
+      puts "#{index + 1}. #{task.description} - complete"
+    else 
+      puts "#{index + 1}. #{task.description}" 
+    end
+  end
 when 'delete'
-  input.shift
-  
-    #Call controller
-    "Deleted \"#{}"
+  deleted_object = TaskController.delete(input.to_i)
+  puts "Deleted #{deleted_object.description} from tasks"
+when 'complete'
+  TaskController.complete(input.to_i)
+end
 
-  when 'list'
 
-    TaskController.list.each_index do |index|
-      "#{list_number} #{List.description[list_number]}"
-    end
-    when 'complete'
 
-    end
