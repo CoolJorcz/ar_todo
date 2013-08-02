@@ -7,6 +7,7 @@ class TaskController
 
   def self.delete(list_number)
     Task.delete(list_number - 1)
+    
   end
 
   def self.list
@@ -18,4 +19,3 @@ class TaskController
   end
 end
 
-p TaskController.list
