@@ -15,6 +15,12 @@ task "db:drop" do
   rm_f DB_PATH
 end
 
+desc "create migration and add a timestamp"
+task :create_migration, :table_name  do |t,table_name|
+  puts "Creating migration file..."
+  puts "Argument was: #{table_name}"
+end
+
 desc "migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."
 task "db:migrate" do
   ActiveRecord::Migrator.migrations_paths << File.dirname(__FILE__) + 'db/migrate'
