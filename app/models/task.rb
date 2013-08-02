@@ -1,3 +1,4 @@
+require_relative '../../config/application.rb'
 
 class Task < ActiveRecord::Base
   def self.add(stuff)
@@ -7,7 +8,7 @@ class Task < ActiveRecord::Base
   def self.delete(list_number)
     all[list_number].destroy
   end
-  
+
   def self.list
     all
   end
