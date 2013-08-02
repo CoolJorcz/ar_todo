@@ -9,6 +9,11 @@ task "db:create" do
   touch DB_PATH
 end
 
+desc "open a sqlite3 console"
+task "db:console" do
+  exec "sqlite3 ./db/ar_todo.db"
+end
+
 desc "drop the database"
 task "db:drop" do
   puts "Deleting #{DB_PATH}..."
